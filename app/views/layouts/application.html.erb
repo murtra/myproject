@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Myproject</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+	<head>		
+		<!-- =============== Basic Page Needs =============== -->
+		<meta charset="utf-8"/>
+    	<title>Hello</title>
+    	<meta name="viewport" content="width=device-width"/>
 
-<%= yield %>
+        <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    	<%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>   
+        <%= csrf_meta_tags %>
+		
+		<!-- ================== Stylesheets ================= -->
+		<%= stylesheet_link_tag 'base' %>
+        <%= stylesheet_link_tag 'screen' %>
+        				
+		<!-- ==================== Scripts =================== -->
+		<%= javascript_include_tag 'modernizr' %>
+	</head>
 
-</body>
+    
+
+    <%= yield %>
+
+    
 </html>
