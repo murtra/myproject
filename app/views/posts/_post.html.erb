@@ -1,0 +1,81 @@
+<!-- === Article === -->
+            <article class="entry">
+              <!-- Entry Header -->
+              <header class="entry-header">
+                <h2 class="entry-title">
+                  <a><%= post.question.title %></a></h2>
+                <div class="entry-meta">
+                  <span class="posted-on"><%= time_ago_in_words(post.created_at) %> ago</span></div>
+              </header>
+              
+
+              <!-- Entry Body -->
+              <div class="entry-body">
+                <!-- Entry Content -->
+                <div class="entry-content">
+                  <div class="author-image">
+                    <%= link_to image_tag("#{post.user.avatar.url(:thumb)}") , post.user %>
+                  </div>
+                  <div class="author-text">
+                    <p><%= post.content %></p>
+                  </div>
+                </div>
+
+
+
+
+<%= form_for(@comment) do |f| %>
+  <% if @comment.errors.any? %>
+    <div >
+      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.hidden_field :post_id, :value => post.id %><br>
+  </div> 
+
+  <div>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </div>
+
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %> 
+ 
+
+<% post.comments.each do |comment| %>
+<%= comment.user.id %>
+<%= comment.body %>
+<% end %>
+
+
+
+
+     <% if post.comments.any? %>
+     <%= link_to "#{pluralize( post.comments.count, "comment" )}", new_comment_path, remote: true  %>
+     <% else %>
+     <%= link_to "Comment", new_comment_path, remote: true %>
+     <% end %>
+
+<!--               
+<%= link_to 'New Comment', new_comment_path, id: post.id, remote: true %> -->
+
+
+                <!-- Entry Rate -->
+                <div class="entry-rate">
+                  <ul>
+                    <li><a href="#" class="like"></a></li>
+                    <li><a href="#" class="dislike"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </article>

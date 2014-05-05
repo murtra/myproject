@@ -1,0 +1,139 @@
+<body>
+    <!-- ===== Page Header ===== -->
+    <header class="page-header">
+      <div class="inner">
+        <div class="row">
+          <!-- Logo -->
+          <div class="small-12 medium-6 columns">
+            <a href="index.html">
+              <img src="/assets/unstyle/logo-smallest.png" alt="logo"/>
+            </a>
+          </div>
+          
+          <!-- Icon List -->
+          <div class="small-12 medium-6 columns">
+            <nav class="page-nav group">
+              <ul class="icons">
+
+                <% if user_signed_in? %>
+
+                <li><%= link_to "", current_user, class: "logout" %></li>
+
+                <li><a rel="nofollow" href="/signout" data-method="delete" class="logout" ></a></li>    <!-- logout link -->
+  
+               
+
+                <% end %>
+
+
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    
+    <!-- ===== Page Content ===== -->
+    <div class="page-content">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="entry-feed">
+
+          <% @posts.each do |post| %> 
+      <!-- === Article === -->
+            <article class="entry">
+              <!-- Entry Header -->
+              <header class="entry-header">
+                <h2 class="entry-title">
+                  <a></a></h2>
+                <div class="entry-meta">
+                  <span class="posted-on"><%= time_ago_in_words(post.created_at) %> ago</span></div>
+              </header>
+              
+              <!-- Entry Body -->
+              <div class="entry-body">
+                <!-- Entry Content -->
+                <div class="entry-content">
+                  <div class="author-image">
+                    <%= link_to "#{post.user.firstname + " " + post.user.lastname }", post.user %>
+                  </div>
+                  <div class="author-text">
+                    <p><%= post.content %></p>
+                  </div>
+                </div>
+                
+                <!-- Entry Rate -->
+                <div class="entry-rate">
+                  <ul>
+                    <li><a href="#" class="like"></a></li>
+                    <li><a href="#" class="dislike"></a></li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+          <% end %>
+
+            
+         
+
+              
+           
+            
+            <div class="back-to-top"><a href="#"></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- ===== Page Bottom Section ===== -->
+    <div class="page-bottom">
+      <div class="inner"></div>
+    </div>
+    
+    
+    <!-- ===== Page Footer ===== -->
+    <footer class="page-footer">
+      <!-- Links -->
+      <div class="row">
+        <div class="small-12 medium-6 medium-offset-6 columns">
+          <ul class="footer-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- Logo and Social -->
+      <div class="row">
+        <div class="small-10 small-offset-2 medium-6 medium-offset-6 columns">
+          <a class="logo" href="index.html">
+            <img src="/assets/unstyle/logo-footer.png" alt="logo"/>
+          </a>
+          
+          <!-- 
+          <ul class="social">
+            <li><a href="#" class="email"></a></li>
+            <li><a href="#" class="facebook"></a></li>
+            <li><a href="#" class="twitter"></a></li>
+            <li><a href="#" class="linkedin"></a></li>
+            <li><a href="#" class="googleplus"></a></li>
+          </ul>
+          -->
+        </div>
+      </div>
+    </footer>
+    
+    <!-- ==================== Scripts =================== -->
+    <script src="js/jquery-1.8.0.min.js"></script>
+    <script src="js/scripts.js"></script>
+    
+    <script>
+      $(function() {
+        setUpScrollingLink();         
+      });
+    </script>
+  </body>
+</html>
