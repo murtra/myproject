@@ -23,7 +23,7 @@ before_filter :authenticate_user!
     private
 
     def user_params
-    	params.require(:user).permit(:password, :password_confirmation, :current_password)
+    	params.require(:user).permit(:password, :password_confirmation, :current_password, :firstname, :lastname)
     end
 
 end

@@ -1,6 +1,7 @@
 Project::Application.routes.draw do
 
   resources :users, only: [ :show ]
+  resources :posts, only: [ :index, :new, :create ]
   
   resource :user, only: [:edit] do
   collection do
