@@ -1,5 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+# this works but new password and password confirmation doesn't need 
+# to be the same to update which is wrong and also after adding validation
+# these won't work
+
 	def update
 		account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
     @user = User.find(current_user.id)
