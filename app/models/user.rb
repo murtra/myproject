@@ -5,10 +5,7 @@ class User < ActiveRecord::Base
   
   has_many :posts
 
-  validates :firstname, presence: true, :uniqueness => {:case_sensitive => false }
-  validates :lastname, presence: true, :uniqueness => {:case_sensitive => false }
-  validates :email, presence: true, :uniqueness => {:case_sensitive => false }
-  validates :password, presence: true, :uniqueness => {:case_sensitive => false }
+  validates :password, presence: true, on: :create
 
-
+  
 end
