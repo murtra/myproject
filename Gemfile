@@ -19,7 +19,9 @@ gem 'turbolinks', '1.1.1'
 gem 'jbuilder', '1.0.2'
 
 
-gem "paperclip", "~> 4.1"      # for users to add user avatar picture
+gem 'carrierwave'                       # User avatar feature
+gem 'rmagick', :require => 'RMagick'    # User avatar feature
+gem 'jcrop-rails-v2'                    # User avatar feature
 
 gem 'pg'
 gem 'rails_12factor'
